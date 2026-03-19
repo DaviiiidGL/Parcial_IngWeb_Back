@@ -1,0 +1,6 @@
+@Parcial_IngWeb_HostAddress = http://localhost:5169
+
+GET {{Parcial_IngWeb_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
