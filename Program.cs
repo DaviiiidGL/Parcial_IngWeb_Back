@@ -1,8 +1,17 @@
+using ApiConciertos.DAO;
+using Microsoft.EntityFrameworkCore;
+using Parcial_IngWeb.Interfaces;
+using Parcial_IngWeb.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
 // Add services to the container.
+builder.Services.AddScoped<IPreguntasService, PreguntasService>();
+builder.Services.AddScoped<IRespuestasService, RespuestasService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
